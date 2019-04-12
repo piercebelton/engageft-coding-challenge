@@ -1,34 +1,12 @@
 <html>
   <head>
-    <title>EngageFT Coding Challenge</title>
-    <link type= "text/css" rel="stylesheet" href="eft-code-challenge.css"/>
-    <script src="eft-code-challenge.js"></script>
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="import" href="head-content.html">
   </head>
   <body>
-
-    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-      <div class="navbar-header pull-left">
-        <a id="navbar-title" href="index.html">Navbar</a>
-      </div>
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link" href="./index.html" onclick="redirectIfLoggedIn('home'); return false;">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="./index.html" onclick="redirectIfLoggedIn('account'); return false;">Account</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Login</a>
-        </li>
-      </ul>
-    </nav>
-
-
+    <div class="nav-container"></div>
     <div class="container">
       <div class="row">
         <div class="col-10 offset-1 vertical-center">
-
           <form id="login-form">
             <h2>Login</h2>
             <div class="form-group">
@@ -41,11 +19,8 @@
             </div>
             <button class="btn btn-primary" type="submit" onclick="return attemptLogin()">Submit</button>
           </form>
-
         </div>
       </div>
     </div>
-
-
   </body>
 </html>

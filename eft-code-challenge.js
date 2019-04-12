@@ -13,13 +13,16 @@ function attemptLogin(){
   }
 }
 
+
 function credentialsValid(email, password){
   return (email === "Sincere@april.biz" && password === "hirePierce" ? true : false);
 }
 
+
 function setLoggedInCookie(email){
   document.cookie = "email=" + email;
 }
+
 
 function redirectIfLoggedIn(link){
   if (getCookie("email") === "Sincere@april.biz"){
@@ -28,6 +31,7 @@ function redirectIfLoggedIn(link){
     window.location.href = "./index.html";
   }
 }
+
 
 function getCookie(cookieName) {
   var name = cookieName + "=";
@@ -43,3 +47,14 @@ function getCookie(cookieName) {
   }
   return "";
 }
+
+
+function insertNavbar(){
+  var navBar = '<nav class="navbar navbar-expand-sm bg-dark navbar-dark"><div class="navbar-header pull-left"><a id="navbar-title" href="index.html">Navbar</a></div><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="./index.html" onclick="redirectIfLoggedIn(\'home\'); return false;">Home</a></li><li class="nav-item"><a class="nav-link" href="./index.html" onclick="redirectIfLoggedIn(\'account\'); return false;">Account</a></li><li class="nav-item"><a class="nav-link" href="#">Login</a></li></ul>'
+  $(navBar).insertAfter(".nav-container");
+}
+
+
+$( document ).ready(function() {
+    insertNavbar();
+});
