@@ -1,12 +1,9 @@
-<!DOCTYPE html>
 <html>
   <head>
     <title>EngageFT Coding Challenge</title>
-
     <link type= "text/css" rel="stylesheet" href="eft-code-challenge.css"/>
     <script src="eft-code-challenge.js"></script>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
   </head>
   <body>
 
@@ -27,6 +24,28 @@
       </ul>
     </nav>
 
-    <p>Is this thing on?</p>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-10 offset-1 vertical-center">
+
+          <form id="login-form">
+            <h2>Login</h2>
+            <div class="form-group">
+              <label for="inputEmail">Email address</label>
+              <input type="email" class="form-control" name="email" placeholder="Enter email">
+            </div>
+            <div class="form-group">
+              <label for="inputPassword">Password</label>
+              <input type="password" class="form-control" name="password" placeholder="Password">
+            </div>
+            <button class="btn btn-primary" type="submit" onclick="return attemptLogin()">Submit</button>
+          </form>
+
+        </div>
+      </div>
+    </div>
+
+
   </body>
 </html>
