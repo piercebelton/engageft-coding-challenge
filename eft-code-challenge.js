@@ -6,16 +6,15 @@ function attemptLogin(){
   if (credentialsValid(email, password)) {
     setLoggedInCookie(email);
     window.location.href = "./home.html";
-    return false;
-    //^^need to return false else form reloads 'index'
   } else {
-    return console.log("bad creds, placeholder for flash message");
+    $("#login-alert").hide();
+    $("#invalid-alert").show();
   }
 }
 
 
 function credentialsValid(email, password){
-  return (email === "Sincere@april.biz" && password === "hirePierce" ? true : false);
+  return (email === "Sincere@april.biz" && password === "hirePierce");
 }
 
 
@@ -50,11 +49,28 @@ function getCookie(cookieName) {
 
 
 function insertNavbar(){
-  var navBar = '<nav class="navbar navbar-expand-sm bg-dark navbar-dark"><div class="navbar-header pull-left"><a id="navbar-title" href="index.html">Navbar</a></div><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="./index.html" onclick="redirectIfLoggedIn(\'home\'); return false;">Home</a></li><li class="nav-item"><a class="nav-link" href="./index.html" onclick="redirectIfLoggedIn(\'account\'); return false;">Account</a></li><li class="nav-item"><a class="nav-link" href="#">Login</a></li></ul>'
+  var navBar = '<nav class="navbar navbar-expand-sm bg-dark navbar-dark"><div class="navbar-header pull-left"><a id="navbar-title">Navbar</a></div><ul class="navbar-nav"><li class="nav-item"><a id="home-link" class="nav-link">Home</a></li><li class="nav-item"><a id="acct-link" class="nav-link">Account</a></li><li class="nav-item"><a class="nav-link" href="#">Login</a></li></ul></nav>'
   $(navBar).insertAfter(".nav-container");
 }
 
 
 $( document ).ready(function() {
     insertNavbar();
+    $("#invalid-alert").hide();
+
+    $("#navbar-title").click(function(){
+      redirectIfLoggedIn('home');
+    });
+
+    $("#home-link").click(function(){
+      redirectIfLoggedIn('home');
+    });
+
+    $("#acct-link").click(function(){
+      redirectIfLoggedIn('account');
+    });
+
+    $("#login-button").click(function(){
+      attemptLogin();
+    });
 });
