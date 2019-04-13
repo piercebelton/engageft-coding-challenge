@@ -23,6 +23,11 @@ function setLoggedInCookie(email){
 }
 
 
+function deleteLoggedInCookie(){
+  document.cookie = "email= ; expires = Thu, 01 Jan 1970 00:00:00 GMT"
+}
+
+
 function redirectIfLoggedIn(link){
   if (getCookie("email") === "Sincere@april.biz"){
     window.location.href = "./" + link + ".html";
@@ -49,28 +54,41 @@ function getCookie(cookieName) {
 
 
 function insertNavbar(){
-  var navBar = '<nav class="navbar navbar-expand-sm bg-dark navbar-dark"><div class="navbar-header pull-left"><a id="navbar-title">Navbar</a></div><ul class="navbar-nav"><li class="nav-item"><a id="home-link" class="nav-link">Home</a></li><li class="nav-item"><a id="acct-link" class="nav-link">Account</a></li><li class="nav-item"><a class="nav-link" href="#">Login</a></li></ul></nav>'
+  var navBar = '<nav class="navbar navbar-expand-sm bg-dark navbar-dark"><div class="navbar-header pull-left"><a id="navbar-title">Navbar</a></div><ul class="navbar-nav"><li class="nav-item"><a id="home-link" class="nav-link">Home</a></li><li id="acct-li" class="nav-item"><a id="acct-link" class="nav-link">Account</a></li></ul></nav>';
   $(navBar).insertAfter(".nav-container");
+}
+
+
+function insertLoginLogoutLink(){
+  var login = '<li class="nav-item"><a class="nav-link" href="index.html">Login</a></li>';
+  var logout = '<li class="nav-item"><a id="logout-link" class="nav-link">Logout</a></li>';
+  if (getCookie("email") === "Sincere@april.biz"){
+    $(logout).insertAfter("#acct-li");
+  } else {
+    $(login).insertAfter("#acct-li");
+  }
 }
 
 
 $( document ).ready(function() {
     insertNavbar();
+    insertLoginLogoutLink();
     $("#invalid-alert").hide();
 
     $("#navbar-title").click(function(){
       redirectIfLoggedIn('home');
     });
-
     $("#home-link").click(function(){
       redirectIfLoggedIn('home');
     });
-
     $("#acct-link").click(function(){
       redirectIfLoggedIn('account');
     });
-
     $("#login-button").click(function(){
       attemptLogin();
+    });
+    $("#logout-link").click(function(){
+      deleteLoggedInCookie();
+      window.location.href = "./index.html";
     });
 });
