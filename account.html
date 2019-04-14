@@ -18,29 +18,31 @@
               <div class="card-header"><h4 >User Profile</h4></div>
               <div class="card-body row">
 
-                <div class="col-xs-12 col-lg-4">
+                <div class="col-xs-12 col-lg-4 company-info">
                   <img alt="User Pic" src="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg" id="profile-image" class="img-circle img-responsive">
-                  <input id="profile-image-upload" hidden type="file">
+                  <input id="profile-image-upload" type="file" hidden>
                   <h4 id="full-name"></h4>
-                  <h5 id="company-name"></h5>
-                  <i>
-                    <div id="company-catchphrase"></div>
-                    <div id="company-bs"></div>
-                  </i>
+                  <div class="border"></div>
+                  <div><h6>Works at <span id="company-name"></span></h6></div>
+                  <div>Catch Phrase: <i>"<span id="company-catchphrase"></span>"</i></div>
+                  <div>Business Strategy: <i>"<span id="company-bs"></span></i>"</div>
                 </div>
 
                 <div class="col-xs-12 col-lg-4">
-                  <ul>
-                    <li id="username"></li>
-                    <li id="email"></li>
-                    <li id="phone"></li>
-                    <li id="website"></li>
-                  </ul>
+                  <h4 id="contact-title">Contact Info:</h4>
+                  <h6>Username: <span id="username"></span></h6>
+                  <div class="border"></div>
+                  <h6>Email: <span id="email"></span></h6>
+                  <div class="border"></div>
+                  <h6>Phone: <span id="phone"></span></h6>
+                  <div class="border"></div>
+                  <h6>Website: <span id="website"></span></h6>
+                  <div class="border"></div>
                   <h6>Address:</h6>
                   <p>
                     <span id="street"></span>,
                     <span id="suite"></span><br>
-                    <span id="city"></span>,
+                    <span id="city"></span><br>
                     <span id="zip"></span>
                   </p>
                 </div>
@@ -50,6 +52,7 @@
                     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3975.484365030213!2d51.0717778!3d-4.8581867!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzfCsDE4JzU3LjIiUyA4McKwMDgnNTguNiJF!5e0!3m2!1sen!2sus!4v1555202310803!5m2!1sen!2sus" frameborder="0" style="border:0" allowfullscreen></iframe>
                   </div>
                 </div>
+
               </div>
             </div>
           </div>
@@ -57,12 +60,4 @@
       </div>
     </div>
   </body>
-
-    <script>
-    $(function() {
-      $('#profile-image').on('click', function() {
-        $('#profile-image-upload').click();
-      });
-    });
-    </script>
 </html>

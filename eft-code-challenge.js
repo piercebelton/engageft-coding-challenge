@@ -110,4 +110,7 @@ $( document ).ready(function() {
       deleteLoggedInCookie();
       window.location.href = "./index.html";
     });
+    $('#profile-image').click(function() {
+      $('#profile-image-upload').click();
+    });
 });

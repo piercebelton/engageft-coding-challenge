@@ -10,8 +10,22 @@
 }
 
 #profile-image {
-  width: 12rem;
-  height: 12rem;
+  width: 10rem;
+  height: 10rem;
   border: .2rem solid #868e96;
-  margin: 1rem;
+  margin: .5rem;
+}
+
+.border{
+  width: 100%;
+  border-bottom: .1rem solid #868e96;
+  margin-bottom: .4rem;
+}
+
+.company-info > div {
+  margin-top: .5rem;
+}
+
+#contact-title {
+  margin-bottom: 1.5rem;
 }
