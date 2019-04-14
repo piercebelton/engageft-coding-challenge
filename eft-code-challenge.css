@@ -8,3 +8,10 @@
 .vertical-center {
   margin-top: 10%;
 }
+
+#profile-image {
+  width: 12rem;
+  height: 12rem;
+  border: .2rem solid #868e96;
+  margin: 1rem;
+}

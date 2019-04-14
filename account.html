@@ -14,15 +14,53 @@
       <div class="row">
         <div class="col-10 offset-1 vertical-center">
           <div class="card">
-            <div class="card-header">
-              <h6 class="card-text">Welcome to your account page!</h6>
-            </div>
-            <div class="card-body">
-              <p class="card-text">Find your info below.</p>
+            <div class="panel panel-default">
+              <div class="card-header"><h4 >User Profile</h4></div>
+              <div class="card-body row">
+
+                <div class="col-xs-12 col-lg-4">
+                  <img alt="User Pic" src="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg" id="profile-image" class="img-circle img-responsive">
+                  <input id="profile-image-upload" hidden type="file">
+                  <h4 id="full-name"></h4>
+                  <h5 id="company-name"></h5>
+                  <i>
+                    <div id="company-catchphrase"></div>
+                    <div id="company-bs"></div>
+                  </i>
+                </div>
+
+                <div class="col-xs-12 col-lg-4">
+                  <ul>
+                    <li id="username"></li>
+                    <li id="email"></li>
+                    <li id="phone"></li>
+                    <li id="website"></li>
+                  </ul>
+                  <h6>Address:</h6>
+                  <p>
+                    <span id="street"></span>,
+                    <span id="suite"></span><br>
+                    <span id="city"></span>,
+                    <span id="zip"></span>
+                  </p>
+                </div>
+
+                <div class="col-xs-12 col-lg-4">
+
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
   </body>
+
+    <script>
+    $(function() {
+      $('#profile-image').on('click', function() {
+        $('#profile-image-upload').click();
+      });
+    });
+    </script>
 </html>
