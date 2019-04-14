@@ -1,5 +1,5 @@
 function insertNavbar() {
-  var navBar = ''
+  var navBar = '';
   $.get("../views/navbar.html", function(html_string) {
     navBar = html_string;
     $(navBar).appendTo(".nav-container");

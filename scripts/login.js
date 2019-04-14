@@ -28,6 +28,8 @@ $(document).ready(function() {
   $("#account-alert").hide();
   $("#invalid-alert").hide();
   $("logout-alert").hide();
+  // attempted to hide by class here^ $(".alert").hide(); but for whatever reason logout-alert will not show after that.
+
   $("#login-button").click(function() {
     attemptLogin();
   });

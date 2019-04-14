@@ -1,5 +1,5 @@
 function appendUserData() {
-  return $.getJSON('https://jsonplaceholder.typicode.com/users/1', function(data) {
+  $.getJSON('https://jsonplaceholder.typicode.com/users/1', function(data) {
     $("#full-name").append(data.name);
     $("#company-name").append(data.company.name);
     $("#company-catchphrase").append(data.company.catchPhrase);
