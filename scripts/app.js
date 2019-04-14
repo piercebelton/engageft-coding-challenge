@@ -1,16 +1,33 @@
 function insertNavbar() {
-  var navBar = '<nav class="navbar navbar-expand-sm bg-dark navbar-dark"><div class="navbar-header pull-left"><a id="navbar-title">Navbar</a></div><ul class="navbar-nav"><li class="nav-item"><a id="home-link" class="nav-link">Home</a></li><li id="acct-li" class="nav-item"><a id="acct-link" class="nav-link">Account</a></li></ul></nav>';
-  $(navBar).insertAfter(".nav-container");
+  var navBar = ''
+  $.get("../views/navbar.html", function(html_string) {
+    navBar = html_string;
+    $(navBar).insertAfter(".nav-container");
+    insertLoginLogoutLink();
+    $("#navbar-title").click(function() {
+      redirectIfLoggedIn('index');
+    });
+    $("#home-link").click(function() {
+      redirectIfLoggedIn('index');
+    });
+    $("#acct-link").click(function() {
+      redirectIfLoggedIn('account');
+    });
+    $("#logout-link").click(function() {
+      deleteLoggedInCookie();
+      window.location.href = "./login.html";
+    });
+   },'html');
 }
 
 
 function insertLoginLogoutLink() {
-  var login = '<li class="nav-item"><a class="nav-link" href="login.html">Login</a></li>';
-  var logout = '<li class="nav-item"><a id="logout-link" class="nav-link">Logout</a></li>';
+  var login = '<a class="nav-link" href="login.html">Login</a>';
+  var logout = '<a id="logout-link" class="nav-link">Logout</a>';
   if (userLoggedIn()) {
-    $(logout).insertAfter("#acct-li");
+    $(logout).appendTo("#login-li");
   } else {
-    $(login).insertAfter("#acct-li");
+    $(login).appendTo("#login-li");
   }
 }
 
@@ -43,18 +60,4 @@ function deleteLoggedInCookie() {
 
 $(document).ready(function() {
   insertNavbar();
-  insertLoginLogoutLink();
-  $("#navbar-title").click(function() {
-    redirectIfLoggedIn('index');
-  });
-  $("#home-link").click(function() {
-    redirectIfLoggedIn('index');
-  });
-  $("#acct-link").click(function() {
-    redirectIfLoggedIn('account');
-  });
-  $("#logout-link").click(function() {
-    deleteLoggedInCookie();
-    window.location.href = "./login.html";
-  });
 });
