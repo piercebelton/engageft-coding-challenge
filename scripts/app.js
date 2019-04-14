@@ -41,6 +41,7 @@ function alertOrRedirect(link) {
   if (userLoggedIn()) {
     window.location.href = "./" + link + ".html";
   } else {
+    $(".alert").hide();
     var alertId = "#" + link + "-alert";
     $(alertId).show();
   }

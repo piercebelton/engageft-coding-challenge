@@ -7,6 +7,7 @@ function attemptLogin() {
     setLoggedInCookie();
     window.location.href = "./index.html";
   } else {
+    $(".alert").hide();
     $("#invalid-alert").show();
   }
 }
