@@ -4,10 +4,9 @@ function attemptLogin() {
   var password = form.get("password");
 
   if (credentialsValid(email, password)) {
-    setLoggedInCookie(email);
+    setLoggedInCookie();
     window.location.href = "./index.html";
   } else {
-    $("#login-alert").hide();
     $("#invalid-alert").show();
   }
 }
@@ -18,14 +17,20 @@ function credentialsValid(email, password) {
 }
 
 
-function setLoggedInCookie(email) {
-  document.cookie = "email=" + email;
+function setLoggedInCookie() {
+  document.cookie = "loggedIn=true";
 }
 
 
 $(document).ready(function() {
+  $("#index-alert").hide();
+  $("#account-alert").hide();
   $("#invalid-alert").hide();
+  $("logout-alert").hide();
   $("#login-button").click(function() {
     attemptLogin();
   });
+  if (!userLoggedIn()) {
+    $("logout-alert").show();
+  }
 });

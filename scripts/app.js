@@ -2,22 +2,27 @@ function insertNavbar() {
   var navBar = ''
   $.get("../views/navbar.html", function(html_string) {
     navBar = html_string;
-    $(navBar).insertAfter(".nav-container");
+    $(navBar).appendTo(".nav-container");
     insertLoginLogoutLink();
-    $("#navbar-title").click(function() {
-      redirectIfLoggedIn('index');
-    });
-    $("#home-link").click(function() {
-      redirectIfLoggedIn('index');
-    });
-    $("#acct-link").click(function() {
-      redirectIfLoggedIn('account');
-    });
-    $("#logout-link").click(function() {
-      deleteLoggedInCookie();
-      window.location.href = "./login.html";
-    });
+    setNavbarClickFunctions();
    },'html');
+}
+
+
+function setNavbarClickFunctions() {
+  $("#navbar-title").click(function() {
+    alertOrRedirect('index');
+  });
+  $("#home-link").click(function() {
+    alertOrRedirect('index');
+  });
+  $("#acct-link").click(function() {
+    alertOrRedirect('account');
+  });
+  $("#logout-link").click(function() {
+    setLoggedInFalse();
+    window.location.href = "./login.html";
+  });
 }
 
 
@@ -32,17 +37,18 @@ function insertLoginLogoutLink() {
 }
 
 
-function redirectIfLoggedIn(link) {
+function alertOrRedirect(link) {
   if (userLoggedIn()) {
     window.location.href = "./" + link + ".html";
   } else {
-    window.location.href = "./login.html";
+    var alertId = "#" + link + "-alert";
+    $(alertId).show();
   }
 }
 
 
 function userLoggedIn() {
-  var loggedInCookie = "email=Sincere@april.biz";
+  var loggedInCookie = "loggedIn=true";
   var cookieArray = document.cookie.split(";");
   for(var i = 0; i < cookieArray.length; i++) {
     if (cookieArray[i].trim() === loggedInCookie) {
@@ -53,8 +59,8 @@ function userLoggedIn() {
 }
 
 
-function deleteLoggedInCookie() {
-  document.cookie = "email= ; expires = Thu, 01 Jan 1970 00:00:00 GMT";
+function setLoggedInFalse() {
+  document.cookie = "loggedIn=false";
 }
 
 
