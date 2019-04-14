@@ -7,7 +7,7 @@ function insertNavbar() {
 function insertLoginLogoutLink() {
   var login = '<li class="nav-item"><a class="nav-link" href="login.html">Login</a></li>';
   var logout = '<li class="nav-item"><a id="logout-link" class="nav-link">Logout</a></li>';
-  if (getCookie("email") === "Sincere@april.biz") {
+  if (userLoggedIn()) {
     $(logout).insertAfter("#acct-li");
   } else {
     $(login).insertAfter("#acct-li");
@@ -16,7 +16,7 @@ function insertLoginLogoutLink() {
 
 
 function redirectIfLoggedIn(link) {
-  if (getCookie("email") === "Sincere@april.biz") {
+  if (userLoggedIn()) {
     window.location.href = "./" + link + ".html";
   } else {
     window.location.href = "./login.html";
@@ -24,19 +24,15 @@ function redirectIfLoggedIn(link) {
 }
 
 
-function getCookie(cookieName) {
-  var name = cookieName + "=";
+function userLoggedIn() {
+  var loggedInCookie = "email=Sincere@april.biz";
   var cookieArray = document.cookie.split(";");
   for(var i = 0; i < cookieArray.length; i++) {
-    var cookie = cookieArray[i];
-    while (cookie.charAt(0) == " ") {
-      cookie = cookie.substring(1);
-    }
-    if (cookie.indexOf(name) == 0) {
-      return cookie.substring(name.length, cookie.length);
+    if (cookieArray[i].trim() === loggedInCookie) {
+      return true;
     }
   }
-  return "";
+  return false;
 }
 
 
