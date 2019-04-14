@@ -5,7 +5,7 @@ function attemptLogin() {
 
   if (credentialsValid(email, password)) {
     setLoggedInCookie();
-    window.location.href = "./index.html";
+    window.location.href = "index.html";
   } else {
     $(".alert").hide();
     $("#invalid-alert").show();

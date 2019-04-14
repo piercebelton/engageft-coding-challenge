@@ -16,7 +16,7 @@ function appendUserData() {
 }
 
 $(document).ready(function() {
-  if (!userLoggedIn()) window.location.href = "./login.html";
+  if (!userLoggedIn()) window.location.href = "login.html";
   appendUserData();
   $('#profile-image').click(function() {
     $('#profile-image-upload').click();

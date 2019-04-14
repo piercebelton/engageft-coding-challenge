@@ -1,6 +1,6 @@
 function insertNavbar() {
   var navBar = '';
-  $.get("../navbar.html", function(html_string) {
+  $.get("navbar.html", function(html_string) {
     navBar = html_string;
     $(navBar).appendTo(".nav-container");
     insertLoginLogoutLink();
@@ -21,7 +21,7 @@ function setNavbarClickFunctions() {
   });
   $("#logout-link").click(function() {
     setLoggedInFalse();
-    window.location.href = "./login.html";
+    window.location.href = "login.html";
   });
 }
 
@@ -39,7 +39,7 @@ function insertLoginLogoutLink() {
 
 function alertOrRedirect(link) {
   if (userLoggedIn()) {
-    window.location.href = "./" + link + ".html";
+    window.location.href = link + ".html";
   } else {
     $(".alert").hide();
     var alertId = "#" + link + "-alert";
