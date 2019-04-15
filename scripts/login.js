@@ -12,28 +12,29 @@ function attemptLogin() {
   }
 }
 
-
 function credentialsValid(email, password) {
   return (email === "Sincere@april.biz" && password === "hirePierce");
 }
-
 
 function setLoggedInCookie() {
   document.cookie = "loggedIn=true";
 }
 
+function userLoggedOut() {
+  var loggedOutCookie = "loggedIn=false";
+  return document.cookie.includes(loggedOutCookie);
+}
 
 $(document).ready(function() {
   $("#index-alert").hide();
   $("#account-alert").hide();
   $("#invalid-alert").hide();
-  $("logout-alert").hide();
-  // attempted to hide by class here^ $(".alert").hide(); but for whatever reason logout-alert will not show after that.
+  $("#logout-alert").hide();
 
   $("#login-button").click(function() {
     attemptLogin();
   });
-  if (!userLoggedIn()) {
+  if (userLoggedOut()) {
     $("logout-alert").show();
   }
 });
