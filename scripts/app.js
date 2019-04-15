@@ -10,9 +10,9 @@ function insertLoginLogoutLink() {
   var login = '<a class="nav-link" href="login.html">Login</a>';
   var logout = '<a id="logout-link" class="nav-link">Logout</a>';
   if (userLoggedIn()) {
-    $(logout).appendTo("#login-li");
+    $("#login-li").html(logout);
   } else {
-    $(login).appendTo("#login-li");
+    $("#login-li").html(login);
   }
 }
 
