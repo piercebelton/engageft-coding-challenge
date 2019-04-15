@@ -31,7 +31,8 @@ $(document).ready(function() {
   $("#invalid-alert").hide();
   $("#logout-alert").hide();
 
-  $("#login-button").click(function() {
+  $("#login-form").submit(function(e) {
+    e.preventDefault();
     attemptLogin();
   });
   if (userLoggedOut()) {
