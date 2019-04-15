@@ -1,5 +1,5 @@
 function insertUserData() {
-  $.getJSON('https://jsonplaceholder.typicode.com/users/1', function(data) {
+  $.getJSON("https://jsonplaceholder.typicode.com/users/1", function(data) {
     $("#full-name").html(data.name);
     $("#company-name").html(data.company.name);
     $("#company-catchphrase").html(data.company.catchPhrase);
@@ -18,7 +18,8 @@ function insertUserData() {
 $(document).ready(function() {
   if (!userLoggedIn()) window.location.href = "login.html";
   insertUserData();
-  $('#profile-image').click(function() {
-    $('#profile-image-upload').click();
+  document.cookie = "loggedInAlert=hide";
+  $("#profile-image").click(function() {
+    $("#profile-image-upload").click();
   });
 });

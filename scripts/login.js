@@ -4,8 +4,7 @@ function attemptLogin() {
   var password = form.get("password");
 
   if (credentialsValid(email, password)) {
-    setLoggedInCookie();
-    window.location.href = "index.html";
+    logUserIn();
   } else {
     displayAlert("invalid");
   }
@@ -15,13 +14,10 @@ function credentialsValid(email, password) {
   return (email === "Sincere@april.biz" && password === "hirePierce");
 }
 
-function setLoggedInCookie() {
+function logUserIn() {
   document.cookie = "loggedIn=true";
-}
-
-function userLoggedOut() {
-  var loggedOutCookie = "loggedIn=false";
-  return document.cookie.includes(loggedOutCookie);
+  document.cookie = "loggedInAlert=show";
+  window.location.href = "index.html";
 }
 
 $(document).ready(function() {

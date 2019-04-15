@@ -3,7 +3,7 @@ function insertNavbar() {
     $(".nav-container").html(html_string);
     insertLoginLogoutLink();
     setNavbarClickFunctions();
-   },'html');
+  },"html");
 }
 
 function insertLoginLogoutLink() {
@@ -18,14 +18,13 @@ function insertLoginLogoutLink() {
 
 function setNavbarClickFunctions() {
   $("#home-link").click(function() {
-    redirectOrAlert('index', 'home');
+    redirectOrAlert("index", "home");
   });
   $("#acct-link").click(function() {
-    redirectOrAlert('account', 'account');
+    redirectOrAlert("account", "account");
   });
   $("#logout-link").click(function() {
-    setLoggedInFalse();
-    window.location.href = "login.html";
+    logUserOut();
   });
 }
 
@@ -65,12 +64,13 @@ function clearAlert() {
 }
 
 function userLoggedIn() {
-  var loggedInCookie = "loggedIn=true";
-  return document.cookie.includes(loggedInCookie);
+  return document.cookie.includes("loggedIn=true");
 }
 
-function setLoggedInFalse() {
+function logUserOut() {
   document.cookie = "loggedIn=false";
+  document.cookie = "loggedInAlert=hide";
+  window.location.href = "login.html";
 }
 
 $(document).ready(function() {
