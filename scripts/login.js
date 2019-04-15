@@ -7,8 +7,7 @@ function attemptLogin() {
     setLoggedInCookie();
     window.location.href = "index.html";
   } else {
-    $(".alert").hide();
-    $("#invalid-alert").show();
+    displayAlert("invalid");
   }
 }
 
@@ -26,16 +25,9 @@ function userLoggedOut() {
 }
 
 $(document).ready(function() {
-  $("#index-alert").hide();
-  $("#account-alert").hide();
-  $("#invalid-alert").hide();
-  $("#logout-alert").hide();
-
   $("#login-form").submit(function(e) {
     e.preventDefault();
     attemptLogin();
   });
-  if (userLoggedOut()) {
-    $("logout-alert").show();
-  }
+  if (document.cookie.includes("loggedIn=false")) displayAlert("loggedOut");
 });

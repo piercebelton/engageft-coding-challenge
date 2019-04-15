@@ -17,14 +17,11 @@ function insertLoginLogoutLink() {
 }
 
 function setNavbarClickFunctions() {
-  $("#navbar-title").click(function() {
-    alertOrRedirect('index');
-  });
   $("#home-link").click(function() {
-    alertOrRedirect('index');
+    redirectOrAlert('index', 'home');
   });
   $("#acct-link").click(function() {
-    alertOrRedirect('account');
+    redirectOrAlert('account', 'account');
   });
   $("#logout-link").click(function() {
     setLoggedInFalse();
@@ -32,14 +29,39 @@ function setNavbarClickFunctions() {
   });
 }
 
-function alertOrRedirect(link) {
+function redirectOrAlert(link, alert) {
   if (userLoggedIn()) {
     window.location.href = `${link}.html`;
   } else {
-    $(".alert").hide();
-    var alertId = `#${link}-alert`;
-    $(alertId).show();
+    displayAlert(alert);
   }
+}
+
+function displayAlert(alert) {
+  clearAlert();
+  switch(alert) {
+  case "home":
+    $("#login-alert").addClass("alert-danger");
+    $("#login-alert").html("Please login to access the Home page.");
+    break;
+  case "account":
+    $("#login-alert").addClass("alert-danger");
+    $("#login-alert").html("Please login to access the Account page.");
+    break;
+  case "invalid":
+    $("#login-alert").addClass("alert-danger");
+    $("#login-alert").html("Login failed. Email or password is incorrect.");
+    break;
+  case "loggedOut":
+    $("#login-alert").addClass("alert-info");
+    $("#login-alert").html("You are logged out.");
+    break;
+  }
+}
+
+function clearAlert() {
+  $("#login-alert").removeClass("alert-danger alert-info");
+  $("#login-alert").empty();
 }
 
 function userLoggedIn() {
